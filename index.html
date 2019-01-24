@@ -11,6 +11,7 @@
 
 <body>
     <script src="js/three.min.js"></script>
+    <script src="js/OrbitControls.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded',function(){
             let scene =  new THREE.Scene();
@@ -31,6 +32,9 @@
                 camera.aspect=window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
             });
+
+            // add controls
+            let controls = new THREE.OrbitControls(camera, renderer.domElement);
 
             // let's put something on the scene
             // define shape - cube
