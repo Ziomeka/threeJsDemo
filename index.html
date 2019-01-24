@@ -59,6 +59,21 @@
             // add object to scene
             scene.add(myCube);
 
+            //obsługa kliknięć
+            let raycaster = new THREE.Raycaster();
+            let mouse = new THREE.Vector2();
+
+            window.addEventListener( 'dblclick', (event) => {
+                let info=['Navy', 'Lime', 'Maroon', 'Yellow', 'Nowaera Logo', 'Mud'];
+                // calculate mouse position in normalized device coordinates
+                // (-1 to +1) for both components
+                mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+                mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+                raycaster.setFromCamera( mouse, camera );
+                let intersects = raycaster.intersectObjects( scene.children );
+                console.log(info[intersects[0].face.materialIndex] + ' side of cube was double clicked!')
+            }, false );
+
             const render = () => {
                 renderer.render(scene, camera);
             };
