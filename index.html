@@ -51,8 +51,11 @@
             const render = () => {
                 renderer.render(scene, camera);
             };
+            let angle = 0;
             const update = (time) => {
-
+                angle = time / 1000 / 6 * 2 * Math.PI;
+                myCube.rotation.x = angle;
+                myCube.rotation.y = angle/2;
             };
 
             let startTime = null;
